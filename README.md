@@ -1,0 +1,2 @@
+# SeminarioC
+Practica!
