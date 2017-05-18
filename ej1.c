@@ -1,6 +1,6 @@
+#include <stdlib.h>
 #include <stdio.h>
 
- 
 void convertir (int i, char s [], int b){
 	char arr[]= "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	int  modulo,aux=0 , posicion=0;
@@ -17,15 +17,12 @@ void convertir (int i, char s [], int b){
 		posicion--;
 	}
 	s[aux]= '\0';
-	printf("%d", *s);
 
 }
 		
-int main(int argc, char argv []){
-	char s[20];
-	int i, b;
-	i= argv[1];	
-	b= argv[2];
-	convertir(i,s,b);
+int main(int argc, char **argv){
+	char s= malloc (1024);
+	convertir((atoi(argv[1])),s,(atoi(argv[2])));
+	printf("result:%s \n", s);
 	return 0;
 }
