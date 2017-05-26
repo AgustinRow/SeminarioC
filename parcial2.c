@@ -17,28 +17,32 @@ char * concatenar(const char *a, const char *b, int flag) {
 }
 
 void invertir(char *s, int flag) {
-	int aux = (int) strlen (s);
-	char b; int i;
-	for (i=0; i<aux; i++){
-		b = s[i];
-		s[i] = s[aux - 1];
-		s[aux-1] = b;
-		--aux;
-	} 
+	if(flag==0){	
+		int aux = (int) strlen (s);
+		char b; int i;
+		for (i=0; i<aux; i++){
+			b = s[i];
+			s[i] = s[aux - 1];
+			s[aux-1] = b;
+			--aux;
+		} 
+	}
 }
 
 int main(int argc, char *argv[]) {
-	char *s;	
+	char *s;
+	int i=1;	
 	if ((argc == 4) || (argc == 5)){
-		if(argv[1][0] == '-') && ((argv[1][1] == '1') || (argv[1][1] == '0')){	//corrobora que este bien escrito el argumento ej: -0 o -1	
+		if((argv[1][0] == '-') && ((argv[1][1] == '1') || (argv[1][1] == '0'))){	
 			s = concatenar(argv[2], argv[3], ((argv[1][1])-48));
 			if (argc == 5 && argv[4][1] == 'i'){
-				invertir(s, 0);
+				i=0;
 			}
+			invertir(s,i);
 			printf ("%s\n", s);
 			free(s);
 			return 0;
-		}else return 2;	
+		}
 	}
-	else return 2;
+	return 2;
 }
